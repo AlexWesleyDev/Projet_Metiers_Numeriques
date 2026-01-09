@@ -1,59 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 Métiers du Numérique - Plateforme d'Orientation BTS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Plateforme web permettant aux lycéens et étudiants de rechercher des formations BTS dans le domaine du numérique en France, avec visualisation cartographique, filtres avancés et informations sur les rémunérations des métiers.
 
-## About Laravel
+## 📋 Table des matières
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies utilisées](#technologies-utilisées)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Architecture](#architecture)
+- [Choix techniques](#choix-techniques)
+- [API et sources de données](#api-et-sources-de-données)
+- [Sécurité](#sécurité)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Fonctionnalités
 
-## Learning Laravel
+### Accès Public (sans authentification)
+- 🗺️ **Carte interactive** : Visualisation géographique des formations BTS numérique avec Leaflet/OpenStreetMap
+- 📊 **Statistiques globales** : Nombre de formations, élèves, académies, parité F/H
+- 🎨 **Interface moderne** : Design responsive avec Tailwind CSS
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Accès Authentifié (compte requis)
+- 🔍 **Recherche avancée multi-critères** :
+  - Nom de formation (recherche partielle)
+  - Académie (36 académies disponibles)
+  - Ville (1293 communes)
+  - Statut établissement (Public/Privé)
+  - Année scolaire (2019-2024)
+  - Fourchette de rémunération souhaitée
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- 💰 **Référentiel de rémunérations** :
+  - Salaires par métier et niveau d'expérience
+  - Recherche inverse : métiers accessibles par fourchette salariale
+  - Données actualisées 2024
 
-## Laravel Sponsors
+- 📈 **Statistiques personnalisées** :
+  - Historique des recherches utilisateur
+  - Formations et académies les plus recherchées
+  - Métiers mieux rémunérés
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- 📊 **Dashboard personnalisé** :
+  - Vue d'ensemble des statistiques
+  - Accès rapides aux fonctionnalités
+  - Visualisation des tendances
 
-### Premium Partners
+### Enregistrement des statistiques
+- 🔢 Toutes les recherches authentifiées sont enregistrées (anonymisation possible)
+- 📊 Permet d'identifier les formations les plus demandées
+- 🎯 Base pour futures suggestions personnalisées
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🛠️ Technologies utilisées
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Backend
+- **Laravel 10.x** (PHP 8.1+)
+- **SQLite/MySQL** pour la base de données
+- **Laravel Breeze** pour l'authentification
 
-## Code of Conduct
+### Frontend
+- **Blade Templates** (moteur de templates Laravel)
+- **Tailwind CSS 3.x** pour le styling
+- **Leaflet.js 1.9.4** pour la cartographie
+- **Alpine.js** (inclus avec Breeze)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### APIs externes
+- **data.gouv.fr** : Effectifs BTS par établissement
+- **data.gouv.fr** : Référentiel rémunérations métiers du numérique
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📦 Installation
 
-## License
+### Prérequis
+- PHP >= 8.1
+- Composer
+- Node.js et npm
+- SQLite (ou MySQL)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Étapes d'installation
+
+1. **Cloner le repository**
+```bash
